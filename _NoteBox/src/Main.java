@@ -19,6 +19,17 @@ public class Main {
                         메뉴 선택: """ );
                 num = sc.nextInt();
                 sc.nextLine();
+
+                switch (num) {
+                    case 1:
+                        System.out.println("추가할 할 일 입력: ");
+                    case 2:
+                        System.out.println("프로그램을 종료합니다.");
+                        break;
+                    default:
+                        System.out.println("옳은 번호로 다시 시도해주세요.");
+
+                }
             } while (num != 2);
         }
 }
