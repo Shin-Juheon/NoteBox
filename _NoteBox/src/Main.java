@@ -25,7 +25,7 @@ public class Main {
                 case 1:
                     System.out.println("추가할 할 일 입력: ");
                     String memo = sc.nextLine();
-                    addTask(memo);
+                    add(memo);
                     break;
                 case 2:
                     System.out.println("프로그램을 종료합니다.");
@@ -38,9 +38,19 @@ public class Main {
 
         sc.close();
     }
-    public static void addTask(String memo) {
+
+    // 할 일 추가
+    public static void add(String memo) {
         NoteBox.add(memo);
         System.out.println("할 일이 추가되었습니다: " + memo);
+    }
+
+    //
+    public static void delete(String memo) {
+        if (NoteBox.isEmpty()) {
+            System.out.println("비어있습니다.");
+            return;
+        }
     }
 }
 
