@@ -40,10 +40,20 @@ public class Main {
 
         sc.close();
     }
-    //
-    public static void delete(String memo) {
+
+    public void myList() {
+        System.out.println("=== 전체 목록 ===");
         if (NoteBox.isEmpty()) {
             System.out.println("비어있습니다.");
+            
+        }
+    }
+
+
+    //
+    public void delete(String memo) {
+        if (NoteBox.isEmpty()) {
+            myList();
             return;
         }
     }
