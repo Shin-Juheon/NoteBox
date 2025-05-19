@@ -32,6 +32,8 @@ public class Main {
                 case 2:
                     System.out.println("프로그램을 종료합니다.");
                     return;
+                case 3:
+                    delete(sc);
                 default:
                     System.out.println("옳은 번호로 다시 시도해주세요.");
 
@@ -39,24 +41,42 @@ public class Main {
         }
     }
 
-    public void myList() {
+    //전체 저장 항목 메서드
+    public static void myList() {
         System.out.println("=== 전체 목록 ===");
         if (NoteBox.isEmpty()) {
             System.out.println("비어있습니다.");
-        } else
-            for (int i = 0; i < NoteBox.size(); i++) {
-                System.out.println((i + 1) + ". " + NoteBox.get(i));
-            }
+            return;
+        }
+        for (int i = 0; i < NoteBox.size(); i++) {
+            System.out.println((i + 1) + ". " + NoteBox.get(i));
+        }
     }
 
 
-    //
-    public void delete(String memo) {
+    //삭제 메서드
+    public static void delete(Scanner sc) {
+        myList();
+
         if (NoteBox.isEmpty()) {
-            myList();
             return;
+        }
+
+        //
+        System.out.println("삭제할 할 일 번호를 입력하세요 " +
+                "(0 입력 시 전체 삭제): ");
+        int eraser = sc.nextInt();
+        sc.nextLine();
+
+        //if (num < 0)
+            //System.out.println("옳은 번호로 다시 시도해주세요.");
+            //return;
+
+
+        if (eraser == 0) {
+            NoteBox.clear();
+            System.out.println("모든 할 일이 삭제되었습니다.");
         }
     }
 }
-
 
