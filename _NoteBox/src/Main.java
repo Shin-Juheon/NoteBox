@@ -8,7 +8,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int num;
 
-        do {
+        while (true) {
             System.out.print(
                     """
                             -- NoteBox --
@@ -31,22 +31,22 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("프로그램을 종료합니다.");
-                    break;
+                    return;
                 default:
                     System.out.println("옳은 번호로 다시 시도해주세요.");
 
             }
-        } while (num != 2);
-
-        sc.close();
+        }
     }
 
     public void myList() {
         System.out.println("=== 전체 목록 ===");
         if (NoteBox.isEmpty()) {
             System.out.println("비어있습니다.");
-            
-        }
+        } else
+            for (int i = 0; i < NoteBox.size(); i++) {
+                System.out.println((i + 1) + ". " + NoteBox.get(i));
+            }
     }
 
 
