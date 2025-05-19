@@ -68,15 +68,18 @@ public class Main {
         int eraser = sc.nextInt();
         sc.nextLine();
 
-        //if (num < 0)
-            //System.out.println("옳은 번호로 다시 시도해주세요.");
-            //return;
-
+        if (eraser < 0 || eraser > NoteBox.size()) {
+            System.out.println("옳은 번호로 다시 시도해주세요.");
+            return;
+        }
 
         if (eraser == 0) {
             NoteBox.clear();
             System.out.println("모든 할 일이 삭제되었습니다.");
+            return;
         }
+
+        //String
     }
 }
 
