@@ -27,15 +27,18 @@ public class Main {
                     String memo = sc.nextLine();
                     //할 일 추가
                     NoteBox.add(memo);
-                    System.out.println("할 일이 추가되었습니다: " + memo);
+                    System.out.println("할 일이 추가되었습니다: " + memo + "\n");
                     break;
                 case 2:
+                    delete(sc);
+                    break;
+                case 3:
                     System.out.println("프로그램을 종료합니다.");
                     return;
-                case 3:
-                    delete(sc);
+                //case 4:
+                    
                 default:
-                    System.out.println("옳은 번호로 다시 시도해주세요.");
+                    System.out.println("옳은 번호로 다시 시도해주세요.\n");
 
             }
         }
@@ -45,7 +48,7 @@ public class Main {
     public static void myList() {
         System.out.println("=== 전체 목록 ===");
         if (NoteBox.isEmpty()) {
-            System.out.println("비어있습니다.");
+            System.out.println("비어있습니다.\n");
             return;
         }
         for (int i = 0; i < NoteBox.size(); i++) {
@@ -62,24 +65,28 @@ public class Main {
             return;
         }
 
-        //
-        System.out.println("삭제할 할 일 번호를 입력하세요 " +
+        System.out.println("\n삭제할 할 일 번호를 입력하세요 " +
                 "(0 입력 시 전체 삭제): ");
         int eraser = sc.nextInt();
         sc.nextLine();
 
+        //유효성 검사
         if (eraser < 0 || eraser > NoteBox.size()) {
-            System.out.println("옳은 번호로 다시 시도해주세요.");
+            System.out.println("옳은 번호로 다시 시도해주세요.\n");
             return;
         }
 
+        //
         if (eraser == 0) {
             NoteBox.clear();
             System.out.println("모든 할 일이 삭제되었습니다.");
             return;
         }
 
-        //String
+        //개별 삭제
+        String parteraser = NoteBox.remove(eraser -1);
+        System.out.println("삭제된 할 일: " + eraser + "번 =>  " + parteraser);
+        myList();
     }
 }
 
