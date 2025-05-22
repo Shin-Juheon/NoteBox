@@ -1,55 +1,18 @@
-import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Main {
-    public static ArrayList<String> NoteBox = new ArrayList<>();
+public class NoteClass {
+    private ArrayList<String> NoteBox = new ArrayList<>();
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int choice;
 
-        while (true) {
-            System.out.print(
-                    """
-                            -- NoteBox --
-                            1. 할 일 추가
-                            2. 할 일 삭제
-                            3. 할 일 보기
-                            4. 할 일 수정                       
-                            5. 종료
-                            메뉴 선택: """);
-            choice = sc.nextInt();
-            sc.nextLine();
-
-            switch (choice) {
-                case 1:
-                    System.out.println("추가할 할 일 입력: ");
-                    String memo = sc.nextLine();
-                    // 메모 추가
-                    NoteBox.add(memo);
-                    System.out.println("할 일이 추가되었습니다: " + memo + "\n");
-                    break;
-                case 2:
-                    // 메모 삭제
-                    delete(sc);
-                    break;
-                case 3:
-                    // 전체 목록
-                    myList();
-                    break;
-                case 4:
-                    edit(sc);
-                    break;
-                case 5:
-                    // 종료
-                    System.out.println("프로그램을 종료합니다.");
-                    return;
-                default:
-                    System.out.println("옳은 번호로 다시 시도해주세요.\n");
-
-            }
-        }
+    public static void addNoteBox(Scanner sc) {
+        System.out.println("추가할 할 일 입력: ");
+        String memo = sc.nextLine();
+        // 메모 추가
+        NoteBox.add(memo);
+        System.out.println("할 일이 추가되었습니다: " + memo + "\n");
     }
+
 
     //전체 저장 항목 메서드
     public static void myList() {
