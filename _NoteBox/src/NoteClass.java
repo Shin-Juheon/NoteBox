@@ -2,10 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NoteClass {
-    private ArrayList<String> NoteBox = new ArrayList<>();
+    public ArrayList<String> NoteBox = new ArrayList<>();
 
-
-    public static void addNoteBox(Scanner sc) {
+    public void addNoteBox(Scanner sc) {
         System.out.println("추가할 할 일 입력: ");
         String memo = sc.nextLine();
         // 메모 추가
@@ -14,8 +13,8 @@ public class NoteClass {
     }
 
 
-    //전체 저장 항목 메서드
-    public static void myList() {
+    //전체 항목 출력 메서드
+    public void myList() {
         System.out.println("=== 전체 목록 ===");
         if (NoteBox.isEmpty()) {
             System.out.println("비어있습니다.\n");
@@ -28,7 +27,7 @@ public class NoteClass {
 
 
     //삭제 메서드
-    public static void delete(Scanner sc) {
+    public void delete(Scanner sc) {
         myList();
 
         if (NoteBox.isEmpty()) {
@@ -60,7 +59,7 @@ public class NoteClass {
     }
 
     // 수정 메서드
-    public static void edit(Scanner sc) {
+    public void edit(Scanner sc) {
         myList();
 
         if (NoteBox.isEmpty()) {
@@ -88,6 +87,7 @@ public class NoteClass {
         NoteBox.set(num - 1, newM);
         System.out.println("수정되었습니다.\n");
         myList();
+        System.out.println();
     }
 }
 
