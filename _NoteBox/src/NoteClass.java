@@ -53,8 +53,8 @@ public class NoteClass {
         }
 
         //개별 삭제
-        String parteraser = NoteBox.remove(num -1);
-        System.out.println("삭제된 할 일: " + num + "번 =>  " + parteraser);
+        String erase = NoteBox.remove(num -1);
+        System.out.println("삭제된 할 일: " + num + "번 =>  " + erase);
         myList();
     }
 
