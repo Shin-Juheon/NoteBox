@@ -4,10 +4,10 @@ import java.util.Scanner;
 public class NoteClass {
     public ArrayList<String> noteBox = new ArrayList<>();
 
+    // 추가 메서드
     public void addNote(Scanner sc) {
         System.out.println("추가할 할 일 입력: ");
         String memo = sc.nextLine();
-        // 메모 추가
         noteBox.add(memo);
         System.out.println("할 일이 추가되었습니다: " + memo + "\n");
     }
@@ -72,7 +72,6 @@ public class NoteClass {
             System.out.println("옳은 번호로 다시 시도해주세요.\n");
         }
 
-        // 기존 내용
         String oldM = noteBox.get(num - 1);
         System.out.println("기존 내용: " + oldM);
 
