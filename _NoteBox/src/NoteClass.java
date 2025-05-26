@@ -2,35 +2,35 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NoteClass {
-    public ArrayList<String> NoteBox = new ArrayList<>();
+    public ArrayList<String> noteBox = new ArrayList<>();
 
-    public void addNoteBox(Scanner sc) {
+    public void addNote(Scanner sc) {
         System.out.println("추가할 할 일 입력: ");
         String memo = sc.nextLine();
         // 메모 추가
-        NoteBox.add(memo);
+        noteBox.add(memo);
         System.out.println("할 일이 추가되었습니다: " + memo + "\n");
     }
 
 
-    //전체 항목 출력 메서드
-    public void myList() {
+    //전체 출력 메서드
+    public void showAllNotes() {
         System.out.println("=== 전체 목록 ===");
-        if (NoteBox.isEmpty()) {
+        if (noteBox.isEmpty()) {
             System.out.println("비어있습니다.\n");
-            return;
+
         }
-        for (int i = 0; i < NoteBox.size(); i++) {
-            System.out.println((i + 1) + ". " + NoteBox.get(i));
+        for (int i = 0; i < noteBox.size(); i++) {
+            System.out.println((i + 1) + ". " + noteBox.get(i) + "\n");
         }
     }
 
 
     //삭제 메서드
-    public void delete(Scanner sc) {
-        myList();
+    public void deleteNote(Scanner sc) {
+        showAllNotes();
 
-        if (NoteBox.isEmpty()) {
+        if (noteBox.isEmpty()) {
             return;
         }
 
@@ -40,29 +40,26 @@ public class NoteClass {
         sc.nextLine();
 
         //유효성 검사
-        if (num < 0 || num > NoteBox.size()) {
+        if (num < 0 || num > noteBox.size()) {
             System.out.println("옳은 번호로 다시 시도해주세요.\n");
-            return;
         }
 
-        //
         if (num == 0) {
-            NoteBox.clear();
+            noteBox.clear();
             System.out.println("모든 할 일이 삭제되었습니다.");
-            return;
         }
 
         //개별 삭제
-        String erase = NoteBox.remove(num -1);
+        String erase = noteBox.remove(num -1);
         System.out.println("삭제된 할 일: " + num + "번 =>  " + erase);
-        myList();
+        showAllNotes();
     }
 
     // 수정 메서드
-    public void edit(Scanner sc) {
-        myList();
+    public void editNote(Scanner sc) {
+        showAllNotes();
 
-        if (NoteBox.isEmpty()) {
+        if (noteBox.isEmpty()) {
             return;
         }
 
@@ -71,22 +68,21 @@ public class NoteClass {
         sc.nextLine();
 
         // 유효성 검사
-        if (num < 1 || num > NoteBox.size()) {
+        if (num < 1 || num > noteBox.size()) {
             System.out.println("옳은 번호로 다시 시도해주세요.\n");
-            return;
         }
 
         // 기존 내용
-        String oldM = NoteBox.get(num - 1);
+        String oldM = noteBox.get(num - 1);
         System.out.println("기존 내용: " + oldM);
 
         // 수정 내용
         System.out.println("새 내용을 입력하세요: ");
         String newM = sc.nextLine();
 
-        NoteBox.set(num - 1, newM);
+        noteBox.set(num - 1, newM);
         System.out.println("수정되었습니다.\n");
-        myList();
+        showAllNotes();
         System.out.println();
     }
 }

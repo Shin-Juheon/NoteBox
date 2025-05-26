@@ -5,7 +5,7 @@ public class Main {
         System.out.println("Hello World!");
 
         Scanner sc = new Scanner(System.in);
-        NoteClass noteclass = new NoteClass();
+        NoteClass noteClass = new NoteClass();
         int choice;
 
         while (true) {
@@ -24,19 +24,19 @@ public class Main {
             switch (choice) {
                 case 1:
                     // 메모 추가
-                    noteclass.addNoteBox(sc);
+                    noteClass.addNote(sc);
                     break;
                 case 2:
                     // 메모 삭제
-                    noteclass.delete(sc);
+                    noteClass.deleteNote(sc);
                     break;
                 case 3:
                     // 전체 목록
-                    noteclass.myList();
+                    noteClass.showAllNotes();
                     break;
                 case 4:
                     // 메모 수정
-                    noteclass.edit(sc);
+                    noteClass.editNote(sc);
                     break;
                 case 5:
                     // 종료
