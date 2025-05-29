@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class NoteClass {
-    public ArrayList<String> noteBox = new ArrayList<>();
+    private ArrayList<String> noteBox = new ArrayList<>();
 
     // 추가 메서드
     public void addNote(Scanner sc) {
-        System.out.println("추가할 할 일 입력: ");
+        System.out.println("추가할 메모 입력: ");
         String memo = sc.nextLine();
         noteBox.add(memo);
-        System.out.println("할 일이 추가되었습니다: " + memo + "\n");
+        System.out.println("메모가 추가되었습니다: " + memo + "\n");
     }
 
 
@@ -46,12 +46,12 @@ public class NoteClass {
 
         if (num == 0) {
             noteBox.clear();
-            System.out.println("모든 할 일이 삭제되었습니다.");
+            System.out.println("모든 메모가 삭제되었습니다.");
         }
 
         //개별 삭제
         String erase = noteBox.remove(num -1);
-        System.out.println("삭제된 할 일: " + num + "번 =>  " + erase);
+        System.out.println("삭제된 메모: " + num + "번 =>  " + erase);
         showAllNotes();
     }
 

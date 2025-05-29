@@ -12,10 +12,10 @@ public class Main {
             System.out.print(
                     """
                             -- NoteBox --
-                            1. 할 일 추가
-                            2. 할 일 삭제
-                            3. 할 일 보기
-                            4. 할 일 수정                       
+                            1. 메모 추가
+                            2. 메모 삭제
+                            3. 전체 목록 보기
+                            4. 메모 수정                       
                             5. 종료
                             메뉴 선택: """);
             choice = sc.nextInt();
