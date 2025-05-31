@@ -15,8 +15,9 @@ public class Main {
                             1. 메모 추가
                             2. 메모 삭제
                             3. 전체 목록 보기
-                            4. 메모 수정                       
-                            5. 종료
+                            4. 메모 수정
+                            5. 검색                     
+                            6. 종료
                             메뉴 선택: """);
             choice = sc.nextInt();
             sc.nextLine();
@@ -39,6 +40,10 @@ public class Main {
                     noteClass.editNote(sc);
                     break;
                 case 5:
+                    // 검색
+                    noteClass.findNotes(sc);
+                    break;
+                case 6:
                     // 종료
                     System.out.println("프로그램을 종료합니다.");
                     return;

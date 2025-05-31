@@ -21,7 +21,7 @@ public class NoteClass {
 
         }
         for (int i = 0; i < noteBox.size(); i++) {
-            System.out.println((i + 1) + ". " + noteBox.get(i) + "\n");
+            System.out.println((i + 1) + ". " + noteBox.get(i));
         }
     }
 
@@ -34,7 +34,7 @@ public class NoteClass {
             return;
         }
 
-        System.out.println("\n삭제할 번호를 입력하세요 " +
+        System.out.println("삭제할 번호를 입력하세요 " +
                 "(0 입력 시 전체 삭제): ");
         int num = sc.nextInt();
         sc.nextLine();
@@ -63,7 +63,7 @@ public class NoteClass {
             return;
         }
 
-        System.out.println("\n수정할 번호를 입력하세요: ");
+        System.out.println("수정할 번호를 입력하세요: ");
         int num = sc.nextInt();
         sc.nextLine();
 
@@ -82,6 +82,32 @@ public class NoteClass {
         noteBox.set(num - 1, newM);
         System.out.println("수정되었습니다.\n");
         showAllNotes();
+        System.out.println();
+    }
+
+    // 검색 메서드
+    public void findNotes(Scanner sc) {
+        showAllNotes();
+        if (noteBox.isEmpty()) {
+            return;
+        }
+
+        System.out.println("검색할 단어를 입력하세요: ");
+        String keyword = sc.nextLine();
+
+        System.out.println("=== 검색 결과 ===");
+        boolean f = false;
+        for (int i = 0; i < noteBox.size(); i++) {
+            String memo = noteBox.get(i);
+            if (memo.contains(keyword)) {
+                System.out.println((i + 1) + ". " + memo);
+                f = true;
+            }
+        }
+
+        if (!f) {
+            System.out.println("검색 결과가 없습니다.");
+        }
         System.out.println();
     }
 }
