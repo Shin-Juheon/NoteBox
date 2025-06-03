@@ -14,25 +14,24 @@ public class NoteClass {
 
 
     //전체 출력 메서드
-    public void showAllNotes() {
+    public boolean showAllNotes() {
         System.out.println("=== 전체 목록 ===");
         if (noteBox.isEmpty()) {
             System.out.println("비어있습니다.\n");
+            return true;
 
         }
         for (int i = 0; i < noteBox.size(); i++) {
             System.out.println((i + 1) + ". " + noteBox.get(i));
         }
+        return false;
     }
 
 
     //삭제 메서드
     public void deleteNote(Scanner sc) {
-        showAllNotes();
+        if (showAllNotes()) return;
 
-        if (noteBox.isEmpty()) {
-            return;
-        }
 
         System.out.println("삭제할 번호를 입력하세요 " +
                 "(0 입력 시 전체 삭제): ");
@@ -47,21 +46,19 @@ public class NoteClass {
         if (num == 0) {
             noteBox.clear();
             System.out.println("모든 메모가 삭제되었습니다.");
+            return;
         }
 
         //개별 삭제
         String erase = noteBox.remove(num -1);
-        System.out.println("삭제된 메모: " + num + "번 =>  " + erase);
+        System.out.println("삭제된 메모: " + num + "번 =>  " + erase + "\n");
         showAllNotes();
+        System.out.println();
     }
 
     // 수정 메서드
     public void editNote(Scanner sc) {
-        showAllNotes();
-
-        if (noteBox.isEmpty()) {
-            return;
-        }
+        if (showAllNotes()) return;
 
         System.out.println("수정할 번호를 입력하세요: ");
         int num = sc.nextInt();
@@ -87,10 +84,7 @@ public class NoteClass {
 
     // 검색 메서드
     public void findNotes(Scanner sc) {
-        showAllNotes();
-        if (noteBox.isEmpty()) {
-            return;
-        }
+        if (showAllNotes()) return;
 
         System.out.println("검색할 단어를 입력하세요: ");
         String keyword = sc.nextLine();
@@ -110,5 +104,12 @@ public class NoteClass {
         }
         System.out.println();
     }
+
+//    // 메뉴로 가기 or 종료하기 메서드(NoteClass내에서만 사용함)
+//    private void askExit (Scanner sc) {
+//        while (true) {
+//            System.out.println("1: 메뉴, 2: 종료")
+//        }
+//    }
 }
 
