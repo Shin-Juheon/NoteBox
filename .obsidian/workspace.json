@@ -11,10 +11,12 @@
             "id": "16a4df64cfabce4e",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
-              "icon": "lucide-file",
-              "title": "새 탭"
+              "type": "image",
+              "state": {
+                "file": "Figma/메모장 만들기.png"
+              },
+              "icon": "lucide-image",
+              "title": "메모장 만들기"
             }
           }
         ]
@@ -166,8 +168,8 @@
   },
   "active": "16a4df64cfabce4e",
   "lastOpenFiles": [
-    "README.md",
     "Figma.md",
+    "README.md",
     "_NoteBox/out/production/_NoteBox/NoteClass.class",
     "_NoteBox/out/production/_NoteBox/Main.class",
     "무제.md",
