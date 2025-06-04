@@ -50,10 +50,12 @@ public class NoteClass {
         }
 
         //개별 삭제
-        String erase = noteBox.remove(num -1);
+        String erase = noteBox.remove(num - 1);
         System.out.println("삭제된 메모: " + num + "번 =>  " + erase + "\n");
         showAllNotes();
         System.out.println();
+
+        askExit(sc);
     }
 
     // 수정 메서드
@@ -80,6 +82,8 @@ public class NoteClass {
         System.out.println("수정되었습니다.\n");
         showAllNotes();
         System.out.println();
+
+        askExit(sc);
     }
 
     // 검색 메서드
@@ -105,11 +109,21 @@ public class NoteClass {
         System.out.println();
     }
 
-//    // 메뉴로 가기 or 종료하기 메서드(NoteClass내에서만 사용함)
-//    private void askExit (Scanner sc) {
-//        while (true) {
-//            System.out.println("1: 메뉴, 2: 종료")
-//        }
-//    }
-}
+    // 메뉴로 가기 or 종료하기 메서드(NoteClass내에서만 사용함)
+    private void askExit(Scanner sc) {
+        while (true) {
+            System.out.println("1: 메뉴, 2: 종료");
 
+            switch (sc.nextInt()) {
+                case 1:
+                    return;
+                case 2:
+                    System.out.println("프로그램을 종료합니다.");
+                    System.exit(0);
+                default:
+                    System.out.println("1 또는 2를 입력해주세요.\n");
+            }
+        }
+    }
+
+}
