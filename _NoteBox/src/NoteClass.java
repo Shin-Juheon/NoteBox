@@ -11,7 +11,7 @@ public class NoteClass {
     // 삭제,수정 이후 메뉴 종료 묻기
     private boolean askExit(Scanner sc) {
         while (true) {
-            System.out.println("1: 메뉴, 2: 종료");
+            System.out.print("1: 메뉴, 2: 종료");
             int choose = sc.nextInt();
             sc.nextLine();
 
@@ -47,15 +47,11 @@ public class NoteClass {
             System.out.println("비어있습니다.\n");
             return true;
         }
-        printAllMemo();
-        return false;
-    }
-
-    private void printAllMemo() {
         for (int i = 0; i < noteBox.size(); i++) {
             System.out.println((i + 1) + ". " + noteBox.get(i).getNoteMemo());
         }
         System.out.println();
+        return false;
     }
 
     //메모 삭제하기
@@ -87,37 +83,53 @@ public class NoteClass {
         return num;
     }
 
-    private void printDeleteMemo(int num, Note erase) {
+    private void printDeleteMemo(int num, Note erase)
+    {
         System.out.println("삭제된 메모: " + num + "번 =>  " + erase.getNoteMemo() + "\n");
         showAllNotes();
         System.out.println();
     }
 
 
-    // 수정 메서드
-//    public void editNote(Scanner sc) {
-//        if (showAllNotes()) return;
-//
-//        System.out.println("수정할 번호를 입력하세요: ");
-//        int num = sc.nextInt();
-//        sc.nextLine();
-//
-//
-//        String oldM = noteBox.get(num - 1);
-//        System.out.println("기존 내용: " + oldM);
-//
-//        // 수정 내용
-//        System.out.println("새 내용을 입력하세요: ");
-//        String newM = sc.nextLine();
-//
-//        noteBox.set(num - 1, newM);
-//        System.out.println("수정되었습니다.\n");
-//        showAllNotes();
-//        System.out.println();
-//
-//        askExit(sc);
-//    }
-//
+    // 메모 수정하기
+    public boolean editNote(Scanner sc)
+    {
+        if (showAllNotes())
+            return true;
+        int num = getEditMemo(sc);
+
+        if (!checkNum(num, 1)) {
+            System.out.println("옳은 번호로 입력해주세요.\n");
+            return true;
+        }
+
+        Note note = noteBox.get(num - 1);
+        System.out.println("기존 내용: " + note.getNoteMemo());
+
+        System.out.println("새 내용을 입력하세요 ");
+        String newNoteMemo = sc.nextLine();
+        note.setNoteMemo(newNoteMemo);
+
+        printEditMemo();
+        return askExit(sc);
+    }
+    private int getEditMemo(Scanner sc)
+    {
+        System.out.print("수정할 번호를 입력하세요: ");
+        int num = sc.nextInt();
+        sc.nextLine();
+        return num;
+    }
+    private void printEditMemo()
+    {
+        System.out.println("수정되었습니다.\n");
+        showAllNotes();
+        System.out.println();
+    }
+
+
+
+
 //    // 검색 메서드
 //    public void findNotes(Scanner sc) {
 //        if (showAllNotes()) return;
@@ -140,5 +152,5 @@ public class NoteClass {
 //        }
 //        System.out.println();
 //    }
-//
+
 }

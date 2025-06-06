@@ -28,10 +28,10 @@ public class Main {
                     // 전체 목록
                     noteClass.showAllNotes();
                     break;
-//                case 4:
-//                    // 메모 수정
-//                    noteClass.editNote(sc);
-//                    break;
+                case 4:
+                    // 메모 수정
+                    exit = noteClass.editNote(sc);
+                    break;
 //                case 5:
 //                    // 검색
 //                    noteClass.findNotes(sc);
