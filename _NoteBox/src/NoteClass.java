@@ -8,12 +8,27 @@ public class NoteClass {
     private boolean checkNum(int num, int min) {
         return num >= min && num <= noteBox.size();
     }
+    //유효성 검사 호출할때 코드 단축화
+    private int cutCheckNum(Scanner sc, String userInput, int min) {
+        showAllNotes();
+        if (noteBox.isEmpty()) return -1;
+
+        System.out.print(userInput + "할 번호를 입력하세요: ");
+        int num = sc.nextInt();
+        sc.nextLine();
+
+        if (!checkNum(num, min)) {
+            System.out.print("옳은 번호로 입력해주세요.\n");
+        }
+        return num;
+    }
     // 삭제,수정 이후 메뉴 종료 묻기
     private boolean askExit(Scanner sc) {
         while (true) {
-            System.out.print("1: 메뉴, 2: 종료");
+            System.out.println("1: 메뉴, 2: 종료");
             int choose = sc.nextInt();
             sc.nextLine();
+            System.out.println();
 
             switch (choose) {
                 case 1:
@@ -29,15 +44,11 @@ public class NoteClass {
 
     //메모 추가하기
     public void addNote(Scanner sc) {
-        String memo = getMemo(sc);
+        System.out.println("추가할 메모를 입력하세요");
+        String memo = sc.nextLine();
         Note note = new Note(memo);
         noteBox.add(note);
         System.out.println("메모가 추가되었습니다: " + memo + "\n");
-    }
-
-    private String getMemo(Scanner sc) {
-        System.out.println("추가할 메모를 입력하세요");
-        return sc.nextLine();
     }
 
     //전체 목록 출력하기
@@ -56,15 +67,9 @@ public class NoteClass {
 
     //메모 삭제하기
     public boolean deleteNote(Scanner sc) {
-        if (showAllNotes())
-            return true;
+        int num = cutCheckNum(sc, "삭제(0은 전체삭제)", 0);
+        if (num == -1) return true;
 
-        int num = getDeleteMemo(sc);
-
-        if (!checkNum(num, 0)) {
-            System.out.println("옳은 번호로 입력해주세요.\n");
-            return true;
-        }
         if (num == 0) {
             noteBox.clear();
             System.out.println("모든 메모가 삭제되었습니다.");
@@ -73,14 +78,6 @@ public class NoteClass {
         Note erase = noteBox.remove(num - 1);
         printDeleteMemo(num, erase);
         return askExit(sc);
-    }
-
-    private int getDeleteMemo(Scanner sc) {
-        System.out.println("삭제할 번호를 입력하세요 " +
-                "(0 입력 시 전체 삭제)");
-        int num = sc.nextInt();
-        sc.nextLine();
-        return num;
     }
 
     private void printDeleteMemo(int num, Note erase)
@@ -94,16 +91,10 @@ public class NoteClass {
     // 메모 수정하기
     public boolean editNote(Scanner sc)
     {
-        if (showAllNotes())
-            return true;
-        int num = getEditMemo(sc);
+        int num = cutCheckNum(sc, "수정", 1);
+        if (num == -1) return true;
 
-        if (!checkNum(num, 1)) {
-            System.out.println("옳은 번호로 입력해주세요.\n");
-            return true;
-        }
-
-        Note note = noteBox.get(num - 1);
+        Note note= noteBox.get(num - 1);
         System.out.println("기존 내용: " + note.getNoteMemo());
 
         System.out.println("새 내용을 입력하세요 ");
@@ -113,13 +104,7 @@ public class NoteClass {
         printEditMemo();
         return askExit(sc);
     }
-    private int getEditMemo(Scanner sc)
-    {
-        System.out.print("수정할 번호를 입력하세요: ");
-        int num = sc.nextInt();
-        sc.nextLine();
-        return num;
-    }
+
     private void printEditMemo()
     {
         System.out.println("수정되었습니다.\n");
