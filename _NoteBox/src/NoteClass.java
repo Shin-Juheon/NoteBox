@@ -18,7 +18,8 @@ public class NoteClass {
         sc.nextLine();
 
         if (!checkNum(num, min)) {
-            System.out.print("옳은 번호로 입력해주세요.\n");
+            System.out.print("옳은 번호로 다시 시도해주세요.\n");
+            return -1;
         }
         return num;
     }
@@ -41,7 +42,6 @@ public class NoteClass {
             }
         }
     }
-
     //메모 추가하기
     public void addNote(Scanner sc) {
         System.out.println("추가할 메모를 입력하세요");
@@ -50,7 +50,6 @@ public class NoteClass {
         noteBox.add(note);
         System.out.println("메모가 추가되었습니다: " + memo + "\n");
     }
-
     //전체 목록 출력하기
     public boolean showAllNotes() {
         System.out.println("=== 전체 목록 ===");
@@ -64,7 +63,6 @@ public class NoteClass {
         System.out.println();
         return false;
     }
-
     //메모 삭제하기
     public boolean deleteNote(Scanner sc) {
         int num = cutCheckNum(sc, "삭제(0은 전체삭제)", 0);
@@ -86,8 +84,6 @@ public class NoteClass {
         showAllNotes();
         System.out.println();
     }
-
-
     // 메모 수정하기
     public boolean editNote(Scanner sc)
     {
@@ -111,31 +107,31 @@ public class NoteClass {
         showAllNotes();
         System.out.println();
     }
+    //메모 키워드로 검색하기
+    public void findNotes(Scanner sc) {
+        if (showAllNotes())
+            return;
 
+        System.out.println("검색하고 싶은 문장의 키워드를 입력하세요");
+        String keyword = sc.nextLine().trim();
 
+        System.out.println("=== 검색 결과 ===");
+        printKeywordResult(keyword);
+        System.out.println();
+    }
 
-
-//    // 검색 메서드
-//    public void findNotes(Scanner sc) {
-//        if (showAllNotes()) return;
-//
-//        System.out.println("검색할 단어를 입력하세요: ");
-//        String keyword = sc.nextLine();
-//
-//        System.out.println("=== 검색 결과 ===");
-//        boolean f = false;
-//        for (int i = 0; i < noteBox.size(); i++) {
-//            String memo = noteBox.get(i);
-//            if (memo.contains(keyword)) {
-//                System.out.println((i + 1) + ". " + memo);
-//                f = true;
-//            }
-//        }
-//
-//        if (!f) {
-//            System.out.println("검색 결과가 없습니다.");
-//        }
-//        System.out.println();
-//    }
-
+    private void printKeywordResult (String keyword) {
+        boolean inputKeyword = false;
+        for (int i = 0; i < noteBox.size(); i++) {
+            String memo = noteBox.get(i).getNoteMemo();
+            if (memo.contains(keyword)) {
+                System.out.println((i + 1) + ". " + memo);
+                inputKeyword = true;
+            }
+        }
+        if (!inputKeyword)
+        {
+            System.out.println("검색 결과가 없습니다.");
+        }
+    }
 }

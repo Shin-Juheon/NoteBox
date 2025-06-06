@@ -1,3 +1,4 @@
+//정보은닉
 public class Note {
     private String noteMemo;
 

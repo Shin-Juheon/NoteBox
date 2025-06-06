@@ -17,25 +17,25 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    // 메모 추가
+                    //메모 추가하기
                     noteClass.addNote(sc);
                     break;
                 case 2:
-                    // 메모 삭제
+                    //메모 삭제하기
                     exit = noteClass.deleteNote(sc);
                     break;
                 case 3:
-                    // 전체 목록
+                    //전체 목록 출력하기
                     noteClass.showAllNotes();
                     break;
                 case 4:
-                    // 메모 수정
+                    //메모 수정하기
                     exit = noteClass.editNote(sc);
                     break;
-//                case 5:
-//                    // 검색
-//                    noteClass.findNotes(sc);
-//                    break;
+                case 5:
+                    //메모 키워드로 검색하기
+                    noteClass.findNotes(sc);
+                    break;
                 case 6:
                     // 종료
                     System.out.println("프로그램을 종료합니다.");
