@@ -7,8 +7,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         NoteClass noteClass = new NoteClass();
         int choice;
+        boolean exit = true;
 
-        while (true) {
+        while (exit) {
             printMenu();
 
             choice = sc.nextInt();
@@ -21,20 +22,20 @@ public class Main {
                     break;
                 case 2:
                     // 메모 삭제
-                    noteClass.deleteNote(sc);
+                    exit = noteClass.deleteNote(sc);
                     break;
                 case 3:
                     // 전체 목록
                     noteClass.showAllNotes();
                     break;
-                case 4:
-                    // 메모 수정
-                    noteClass.editNote(sc);
-                    break;
-                case 5:
-                    // 검색
-                    noteClass.findNotes(sc);
-                    break;
+//                case 4:
+//                    // 메모 수정
+//                    noteClass.editNote(sc);
+//                    break;
+//                case 5:
+//                    // 검색
+//                    noteClass.findNotes(sc);
+//                    break;
                 case 6:
                     // 종료
                     System.out.println("프로그램을 종료합니다.");
@@ -47,7 +48,8 @@ public class Main {
 
     }
 
-    private static void printMenu() {
+    private static void printMenu()
+    {
         System.out.print(
                 """
                         -- NoteBox --
