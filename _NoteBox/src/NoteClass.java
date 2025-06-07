@@ -1,3 +1,17 @@
+/**
+ * 기능을 담당하는 클래스 (메서드가 많아 가독성이 떨어져 주석으로 정리)
+ * addNote(Scanner sc) - 메모를 입력받아 리스트에 추가한다
+ * showAllNotes() - 전체 목록을 출력한다.
+ * deleteNote(Scanner sc) - 메모를 삭제한다
+ * editNote(Scanner sc) - 메모를 수정한다
+ * findNotes(Scanner sc) - 키워드로 리스트에 저장되어있는 메모를 검색해 출력한다
+ * -------------------------------------------------
+ * 클래스 내부 메서드
+ * checkNum() - 유효성 검사
+ * cutCheckNum() - 코드 단축화 목적
+ * askExit - 삭제, 수정이후 메뉴 or 종료 기능
+ * printDeleteMemo(), printEditMemo(), printKeywordResult() - 입력 받은 이후 출력을 당담함
+ */
 import java.util.ArrayList;
 import java.util.Scanner;
 
