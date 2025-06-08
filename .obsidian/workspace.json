@@ -11,12 +11,14 @@
             "id": "16a4df64cfabce4e",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Figma/메모장 만들기.png"
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "메모장 만들기"
+              "icon": "lucide-file",
+              "title": "README"
             }
           }
         ]
@@ -168,13 +170,13 @@
   },
   "active": "16a4df64cfabce4e",
   "lastOpenFiles": [
-    "Figma.md",
-    "README.md",
     "_NoteBox/out/production/_NoteBox/NoteClass.class",
-    "_NoteBox/out/production/_NoteBox/Main.class",
     "무제.md",
-    "임시.md",
+    "README.md",
     "Figma/메모장 만들기.png",
+    "Figma.md",
+    "_NoteBox/out/production/_NoteBox/Main.class",
+    "임시.md",
     "Figma/메모장.md",
     "_NoteBox/src/NoteClass.java",
     "메모장 만들기.png",
