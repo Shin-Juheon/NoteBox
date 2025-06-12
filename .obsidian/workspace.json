@@ -168,13 +168,14 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "16a4df64cfabce4e",
+  "active": "2a65f97995020fb4",
   "lastOpenFiles": [
+    "_NoteBox/src/InputManager.java",
+    "Figma.md",
+    "README.md",
     "_NoteBox/out/production/_NoteBox/NoteClass.class",
     "무제.md",
-    "README.md",
     "Figma/메모장 만들기.png",
-    "Figma.md",
     "_NoteBox/out/production/_NoteBox/Main.class",
     "임시.md",
     "Figma/메모장.md",

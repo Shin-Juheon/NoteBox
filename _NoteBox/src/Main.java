@@ -1,3 +1,4 @@
+// 메인 클래스
 import java.util.Scanner;
 
 public class Main {

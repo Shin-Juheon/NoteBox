@@ -18,16 +18,17 @@ import java.util.Scanner;
 public class NoteClass {
     private final ArrayList<Note> noteBox = new ArrayList<>();
 
+
     //유효성 검사
     private boolean checkNum(int num, int min) {
         return num >= min && num <= noteBox.size();
     }
     //유효성 검사 호출할때 코드 단축화
-    private int cutCheckNum(Scanner sc, String userInput, int min) {
+    private int promptNoteNumber(Scanner sc, String adminInput, int min) {
         showAllNotes();
         if (noteBox.isEmpty()) return -1;
 
-        System.out.print(userInput + "할 번호를 입력하세요: ");
+        System.out.print(adminInput + "할 번호를 입력하세요: ");
         int num = sc.nextInt();
         sc.nextLine();
 
@@ -79,7 +80,7 @@ public class NoteClass {
     }
     //메모 삭제하기
     public boolean deleteNote(Scanner sc) {
-        int num = cutCheckNum(sc, "삭제(0은 전체삭제)", 0);
+        int num = promptNoteNumber(sc, "삭제(0은 전체삭제)", 0);
         if (num == -1) return true;
 
         if (num == 0) {
@@ -101,7 +102,7 @@ public class NoteClass {
     // 메모 수정하기
     public boolean editNote(Scanner sc)
     {
-        int num = cutCheckNum(sc, "수정", 1);
+        int num = promptNoteNumber(sc, "수정", 1);
         if (num == -1) return true;
 
         Note note= noteBox.get(num - 1);
