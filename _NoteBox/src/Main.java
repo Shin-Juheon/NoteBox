@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         InputManager input = new InputManager();
-        NoteClass noteClass = new NoteClass();
+        NoteEngine noteClass = new NoteEngine();
 
         boolean exit = true;
 

@@ -14,7 +14,7 @@
  */
 import java.util.ArrayList;
 
-public class NoteClass {
+public class NoteEngine {
     private final ArrayList<Note> noteBox = new ArrayList<>();
 
 
