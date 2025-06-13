@@ -1,29 +1,27 @@
 // 메인 클래스
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
 
-        Scanner sc = new Scanner(System.in);
+        InputManager input = new InputManager();
         NoteClass noteClass = new NoteClass();
-        int choice;
+
         boolean exit = true;
 
         while (exit) {
             printMenu();
 
-            choice = sc.nextInt();
-            sc.nextLine();
+            int choice = input.getInt("");
+
 
             switch (choice) {
                 case 1:
                     //메모 추가하기
-                    noteClass.addNote(sc);
+                    noteClass.addNote(input);
                     break;
                 case 2:
                     //메모 삭제하기
-                    exit = noteClass.deleteNote(sc);
+                    exit = noteClass.deleteNote(input);
                     break;
                 case 3:
                     //전체 목록 출력하기
@@ -31,11 +29,11 @@ public class Main {
                     break;
                 case 4:
                     //메모 수정하기
-                    exit = noteClass.editNote(sc);
+                    exit = noteClass.editNote(input);
                     break;
                 case 5:
                     //메모 키워드로 검색하기
-                    noteClass.findNotes(sc);
+                    noteClass.findNotes(input);
                     break;
                 case 6:
                     // 종료
@@ -60,6 +58,6 @@ public class Main {
                         4. 메모 수정
                         5. 검색
                         6. 종료
-                        메뉴 선택: """);
+                        메뉴 선택:""" + " ");
     }
 }

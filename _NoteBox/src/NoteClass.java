@@ -13,7 +13,6 @@
  * printDeleteMemo(), printEditMemo(), printKeywordResult() - 입력 받은 이후 출력을 당담함
  */
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class NoteClass {
     private final ArrayList<Note> noteBox = new ArrayList<>();
@@ -39,7 +38,7 @@ public class NoteClass {
     // 삭제,수정 이후 메뉴 종료 묻기
     private boolean askExit(InputManager input) {
         while (true) {
-            int choose = input.getInt("1: 메뉴, 2: 종료");
+            int choose = input.getInt("1: 메뉴, 2: 종료\n=> ");
             System.out.println();
 
             switch (choose) {
@@ -55,7 +54,7 @@ public class NoteClass {
     }
     //메모 추가하기
     public void addNote(InputManager input) {
-        String memo = input.getLine("추가할 메모를 입력하세요");
+        String memo = input.getLine("추가할 메모를 입력하세요\n=> ");
         Note note = new Note(memo);
         noteBox.add(note);
         System.out.println("메모가 추가되었습니다: " + memo + "\n");
@@ -95,20 +94,19 @@ public class NoteClass {
         System.out.println();
     }
     // 메모 수정하기
-    public boolean editNote(Scanner sc)
+    public boolean editNote(InputManager input)
     {
-        int num = promptNoteNumber(sc, "수정", 1);
+        int num = promptNoteNumber(input, "수정", 1);
         if (num == -1) return true;
 
         Note note= noteBox.get(num - 1);
         System.out.println("기존 내용: " + note.getNoteMemo());
 
-        System.out.println("새 내용을 입력하세요 ");
-        String newNoteMemo = sc.nextLine();
+        String newNoteMemo = input.getLine("새 내용을 입력하세요: ");
         note.setNoteMemo(newNoteMemo);
 
         printEditMemo();
-        return askExit(sc);
+        return askExit(input);
     }
 
     private void printEditMemo()
@@ -118,15 +116,14 @@ public class NoteClass {
         System.out.println();
     }
     //메모 키워드로 검색하기
-    public void findNotes(Scanner sc) {
+    public void findNotes(InputManager input) {
         if (showAllNotes())
             return;
 
-        System.out.println("검색하고 싶은 문장의 키워드를 입력하세요");
-        String keyword = sc.nextLine().trim();
-
+        String keyword = input.getLine("검색하고 싶은 문장의 키워드를 입력하세요\n=> ").trim();
         System.out.println("=== 검색 결과 ===");
         printKeywordResult(keyword);
+
         System.out.println();
     }
 
