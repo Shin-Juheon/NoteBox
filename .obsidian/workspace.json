@@ -170,21 +170,23 @@
   },
   "active": "2a65f97995020fb4",
   "lastOpenFiles": [
+    "_NoteBox/out/production/_NoteBox/NoteClass.class",
+    "_NoteBox/out/production/_NoteBox/Main.class",
+    "_NoteBox/out/production/_NoteBox/InputManager.class",
     "_NoteBox/src/InputManager.java",
+    "_NoteBox/src/NoteClass.java",
+    "_NoteBox/src/UserInterface.java",
+    "_NoteBox/src/NoteViewer.java",
+    "_NoteBox/src/NoteManager.java",
     "Figma.md",
     "README.md",
-    "_NoteBox/out/production/_NoteBox/NoteClass.class",
     "무제.md",
     "Figma/메모장 만들기.png",
-    "_NoteBox/out/production/_NoteBox/Main.class",
     "임시.md",
     "Figma/메모장.md",
-    "_NoteBox/src/NoteClass.java",
     "메모장 만들기.png",
     "_NoteBox/src/Main.java~",
     "_NoteBox/out/production/_NoteBox",
-    "_NoteBox/out/production",
-    "_NoteBox/out",
-    "_NoteBox/_NoteBox.iml"
+    "_NoteBox/out/production"
   ]
 }

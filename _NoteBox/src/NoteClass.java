@@ -1,14 +1,14 @@
 /**
  * 기능을 담당하는 클래스 (메서드가 많아 가독성이 떨어져 주석으로 정리)
- * addNote(Scanner sc) - 메모를 입력받아 리스트에 추가한다
+ * addNote(InputManager input) - 메모를 입력받아 리스트에 추가한다
  * showAllNotes() - 전체 목록을 출력한다.
- * deleteNote(Scanner sc) - 메모를 삭제한다
- * editNote(Scanner sc) - 메모를 수정한다
- * findNotes(Scanner sc) - 키워드로 리스트에 저장되어있는 메모를 검색해 출력한다
+ * deleteNote(InputManager input) - 메모를 삭제한다
+ * editNote(InputManager input) - 메모를 수정한다
+ * findNotes(InputManager input) - 키워드로 리스트에 저장되어있는 메모를 검색해 출력한다
  * -------------------------------------------------
  * 클래스 내부 메서드
  * checkNum() - 유효성 검사
- * cutCheckNum() - 코드 단축화 목적
+ * promptNoteNumber() - 코드 단축화 목적
  * askExit - 삭제, 수정이후 메뉴 or 종료 기능
  * printDeleteMemo(), printEditMemo(), printKeywordResult() - 입력 받은 이후 출력을 당담함
  */
@@ -24,13 +24,11 @@ public class NoteClass {
         return num >= min && num <= noteBox.size();
     }
     //유효성 검사 호출할때 코드 단축화
-    private int promptNoteNumber(Scanner sc, String adminInput, int min) {
+    private int promptNoteNumber(InputManager input, String adminInput , int min) {
         showAllNotes();
         if (noteBox.isEmpty()) return -1;
 
-        System.out.print(adminInput + "할 번호를 입력하세요: ");
-        int num = sc.nextInt();
-        sc.nextLine();
+        int num = input.getInt(adminInput + "할 번호를 입력하세요: ");
 
         if (!checkNum(num, min)) {
             System.out.print("옳은 번호로 다시 시도해주세요.\n");
@@ -39,11 +37,9 @@ public class NoteClass {
         return num;
     }
     // 삭제,수정 이후 메뉴 종료 묻기
-    private boolean askExit(Scanner sc) {
+    private boolean askExit(InputManager input) {
         while (true) {
-            System.out.println("1: 메뉴, 2: 종료");
-            int choose = sc.nextInt();
-            sc.nextLine();
+            int choose = input.getInt("1: 메뉴, 2: 종료");
             System.out.println();
 
             switch (choose) {
@@ -58,9 +54,8 @@ public class NoteClass {
         }
     }
     //메모 추가하기
-    public void addNote(Scanner sc) {
-        System.out.println("추가할 메모를 입력하세요");
-        String memo = sc.nextLine();
+    public void addNote(InputManager input) {
+        String memo = input.getLine("추가할 메모를 입력하세요");
         Note note = new Note(memo);
         noteBox.add(note);
         System.out.println("메모가 추가되었습니다: " + memo + "\n");
@@ -79,18 +74,18 @@ public class NoteClass {
         return false;
     }
     //메모 삭제하기
-    public boolean deleteNote(Scanner sc) {
-        int num = promptNoteNumber(sc, "삭제(0은 전체삭제)", 0);
+    public boolean deleteNote(InputManager input) {
+        int num = promptNoteNumber(input, "삭제(0은 전체삭제)", 0);
         if (num == -1) return true;
 
         if (num == 0) {
             noteBox.clear();
             System.out.println("모든 메모가 삭제되었습니다.");
-            return askExit(sc);
+            return askExit(input);
         }
         Note erase = noteBox.remove(num - 1);
         printDeleteMemo(num, erase);
-        return askExit(sc);
+        return askExit(input);
     }
 
     private void printDeleteMemo(int num, Note erase)

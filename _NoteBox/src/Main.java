@@ -46,8 +46,8 @@ public class Main {
 
             }
         }
-
     }
+
 
     private static void printMenu()
     {
@@ -58,9 +58,8 @@ public class Main {
                         2. 메모 삭제
                         3. 전체 목록 보기
                         4. 메모 수정
-                        5. 검색                     
+                        5. 검색
                         6. 종료
                         메뉴 선택: """);
     }
 }
-
